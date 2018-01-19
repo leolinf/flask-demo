@@ -1,0 +1,13 @@
+stages:
+    - test
+    - deploy
+
+test:
+    image: python:2.7
+    stage: test
+    script:
+        - mkdir logs
+        - pip install -r requirement.txt -i http://pypi.doubanio.com/simple --trusted-host pypi.doubanio.com
+        - python -m unittest discover -s tests
+    except:
+        - master
