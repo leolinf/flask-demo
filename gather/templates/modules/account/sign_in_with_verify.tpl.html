@@ -1,0 +1,19 @@
+<div>
+    <p>用戶名</p>
+    <input type="text" ng-model="vm.username" />
+</div>
+<div>
+    <input type="text" ng-model="vm.imgVerifyCodeStr" />
+    <img ng-src="{{ vm.imgVerifyCode }}" ng-click="vm.getImgVerifyCode()" ng-if="vm.imgVerifyCode"/>
+</div>
+<div>
+    <input type="text" ng-model="vm.phoneVerifyCode" />
+    <p ng-if="vm.count < 60 && vm.count > 0">{{ vm.count }}s</p>
+    <button ng-click="vm.getPhoneVerifyCode();" ng-if="vm.count <= 0 || vm.count >= 60">獲取短信驗證碼</button>
+    {{ vm.count }}
+</div>
+<div>
+    <p>password</p>
+    <input type="text" ng-model="vm.password" />
+</div>
+<button ng-click="vm.signIn();">signin</button>

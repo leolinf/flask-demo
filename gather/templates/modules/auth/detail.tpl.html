@@ -1,0 +1,46 @@
+<div class="zhifubao-container">
+	<div class="zhifubao-card">
+		<span class="title font-size-15">支付宝帐号</span>
+		<span class="font-size-15" ng-bind="vm.noEmpty( vm.userinfo.zfbAccount )"></span>
+	</div>
+	<div class="zhifubao-card">
+		<span class="title font-size-15">邮箱</span>
+		<span class="font-size-15" ng-bind="vm.noEmpty( vm.userinfo.zfbEmail )"></span>
+	</div>
+	<div class="zhifubao-card">
+		<span class="title font-size-15">绑定手机</span>
+		<span class="font-size-15" ng-bind="vm.noEmpty( vm.userinfo.zfbPhone )"></span>
+	</div>
+	<div class="zhifubao-card">
+		<span class="title font-size-15">实名认证姓名</span>
+		<span class="font-size-15" ng-bind="vm.noEmpty( vm.userinfo.zfbName )"></span>
+	</div>
+	<div class="zhifubao-card">
+		<span class="title font-size-15">身份证号码</span>
+		<span class="font-size-15" ng-bind="vm.noEmpty( vm.userinfo.id )"></span>
+	</div>
+	<div class="zhifubao-card">
+		<span class="title font-size-15">实名认证状态</span>
+		<span class="font-size-15" ng-bind="vm.noEmpty( vm.userinfo.authStatus )"></span>
+	</div>
+	<div class="zhifubao-card">
+		<span class="title font-size-15">账户余额</span>
+		<span class="font-size-15" ng-bind="vm.noEmpty( vm.userinfo.zfBalance )"></span>
+	</div>
+	<div class="zhifubao-card">
+		<span class="title font-size-15">余额宝</span>
+		<span class="font-size-15" ng-bind="vm.noEmpty( vm.userinfo.yuebao )"></span>
+	</div>
+	<div class="zhifubao-card">
+		<span class="title font-size-15">历史累计收益</span>
+		<span class="font-size-15" ng-bind="vm.noEmpty( vm.userinfo.yuebaoTotal )"></span>
+	</div>
+	<div class="zhifubao-card">
+		<span class="title font-size-15">花呗可用额度</span>
+		<span class="font-size-15" ng-bind="vm.noEmpty( vm.userinfo.huabeiAmount/100 )"></span>
+	</div>
+	<div class="zhifubao-card">
+		<span class="title font-size-15">花呗消费额度</span>
+		<span class="font-size-15" ng-bind="vm.noEmpty( vm.userinfo.huabeiTotal/100 )"></span>
+	</div>
+</div>

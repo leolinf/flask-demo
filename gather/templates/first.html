@@ -1,0 +1,19 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html lang="en">
+<head>
+    <title>第一步统计结果</title>
+</head>
+<body>
+    <ul id="navigation">
+    {% for item in result %}
+        <!--<li><a href="{{ item.href }}">{{ item.caption }}</a></li>-->
+        <p>
+        <li>{{ item.errcode }}</li>
+        <li>{{ item.count }}</li>
+        <li>{{ item.precent }}</li>
+        <li>{{ item.msg }}</li>
+        </p>
+    {% endfor %}
+    </ul>
+</body>
+</html>

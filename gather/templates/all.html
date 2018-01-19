@@ -1,0 +1,28 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html lang="en">
+<head>
+    <title>爬虫错误码返回情况</title>
+</head>
+<body>
+    <ul id="navigation">
+        <h1> 第一步返回状态码 </h1>
+    {% for item in first %}
+        <p>
+        <li>{{ item.errcode }}</li>
+        <li>{{ item.count }}</li>
+        <li>{{ item.precent }}</li>
+        <li>{{ item.msg }}</li>
+        </p>
+    {% endfor %}
+        <h1> 第二步返回状态码 </h1>
+        {% for item in second %}
+        <p>
+        <li>{{ item.errcode }}</li>
+        <li>{{ item.count }}</li>
+        <li>{{ item.precent }}</li>
+        <li>{{ item.msg }}</li>
+        </p>
+    {% endfor %}
+    </ul>
+</body>
+</html>

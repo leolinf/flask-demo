@@ -1,0 +1,10 @@
+FROM        python:3.5
+
+MAINTAINER  jiabing
+
+COPY        requirements.txt /tmp/requirements.txt
+
+RUN         curl -L -o /tmp/filebeat.deb https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-5.6.3-amd64.deb \ 
+                && groupadd user && useradd --create-home --home-dir /home/user -g user user \
+                && pip install -r /tmp/requirements.txt --trusted-host mirrors.aliyun.com --index-url https://mirrors.aliyun.com/pypi/simple/ \
+                && rm -rf ~/.cache/pip && rm /tmp/requirements.txt && dpkg -i /tmp/filebeat.deb
