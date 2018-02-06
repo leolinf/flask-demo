@@ -12,7 +12,7 @@ class Config:
 
     LOGGING_LEVEL = "INFO"
 
-    SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://root:wolongdata@127.0.0.1:3306/riskctrl22?charset=utf8'
+    SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://root:123456@127.0.0.1:3306/riskctrl22?charset=utf8'
     SQLALCHEMY_POOL_SIZE = 80
     SQLALCHEMY_POOL_RECYCLE = 1800
     SQLALCHEMY_MAX_OVERFLOW = 20
@@ -99,7 +99,7 @@ class Config:
     # 查询配置
     REPEAT_NUM = ''
     CREDIT_DOMAIN = ''
-    ENABLE_SENTRY = 
+    ENABLE_SENTRY = ''
 
     # 高德地图key
     GD_KEY = ''

@@ -1,6 +1,6 @@
 FROM        python:3.5
 
-MAINTAINER  jiabing
+MAINTAINER  leolinf
 
 COPY        requirements.txt /tmp/requirements.txt
 
