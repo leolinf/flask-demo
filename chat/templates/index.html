@@ -15,13 +15,10 @@
 <script type="text/javascript" charset="utf-8">
     // 前端请求
     var chat = io.connect('http://' + document.domain + ':' + location.port);	// 通过指定的ip和port连接后端
-    chat.on('connect', function(data) {
-        chat.emit('message',{msg: '{{roomid}}'},function(){		//连接建立之后，向后端发送标识符
-            room = io.connect('http://' + document.domain + ':' + location.posrt + '/{{roomid}}');	//后端生成对应的room，并提供连接
-            room.on('liaoxian',function(data){					//监听后端的事件
-                msgPanel.append('<p>'+data+'</p><br>')
-            });
-            });
+    var data = 'hehe';
+    chat.on('news', function(data){
+        console.log(data);
+        chat.emit('message', {msg: 'data'})
     });
 </script>
 <button type="button">点击这里</button>
