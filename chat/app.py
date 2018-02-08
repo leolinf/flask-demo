@@ -51,6 +51,17 @@ def handler_message(message):
     send(message)
     print('recevied message:'+ str(message))
 
+@socketio.on('client_event')
+def client_msg(msg):
+    emit('server_response', {'data': msg['data']})
+    print('client', msg)
+
+@socketio.on('connect_event')
+def connected_msg(msg):
+    emit('server_response', {'data': msg['data']})
+    print('connect', msg)
+    return 'success', '我爱喝水'
+
 
 if __name__ == '__main__':
     socketio.run(app)
