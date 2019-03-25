@@ -69,19 +69,19 @@ class User(Base, UserMixin):
 
     id = Column(BigInteger, primary_key=True, autoincrement=True)
     # 用户名，唯一
-    username = Column('login_name', String(64), unique=True)
+    username = Column('username', String(64), unique=True)
     # 密码，加密后的值
-    password = Column('login_pwd', String(256))
+    password = Column('password', String(256))
     # 最后登录时间
-    last_login = Column('last_login_time', DateTime)
+    last_login = Column('last_login', DateTime)
     # 公司ID
-    company_id = Column(BigInteger, ForeignKey('company.id'), nullable=False)
+    # company_id = Column(BigInteger, ForeignKey('company.id'), nullable=False)
 
     # 公司，关系，不实际存在
-    company = relationship('Company', uselist=False)
+    # company = relationship('Company', uselist=False)
 
     # 是否删除 0-否，未删除，1-是，已删除
-    is_delete = Column(Integer, default=0)
+    # is_delete = Column(Integer, default=0)
 
 
 class InputApply(Base):

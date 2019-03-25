@@ -2,6 +2,7 @@
 
 from app.core.logger import project_logger
 import datetime
+from flask_login import UserMixin
 
 from mongoengine import Document, FileField, DateTimeField, StringField, \
     DictField, IntField, ListField, EmbeddedDocumentField, EmbeddedDocument, \

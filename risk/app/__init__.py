@@ -6,7 +6,7 @@ from sqlalchemy import create_engine
 from mongoengine import connect
 from flask_login import AnonymousUserMixin
 from flask import Flask, g, redirect, request, url_for, session
-from celery import Celery
+#from celery import Celery
 import datetime
 
 from .config import Config
@@ -17,11 +17,11 @@ from .core.functions import CustomJSONEncoder, make_response
 from app.user.function import current_user
 
 
-celery = Celery(
-    __name__,
-    broker=Config.CELERY_BROKER_URL,
-    include=['task.tasks'],
-)
+#celery = Celery(
+#    __name__,
+#    broker=Config.CELERY_BROKER_URL,
+#    include=['task.tasks'],
+#)
 
 
 def create_app(conf=None):
@@ -35,13 +35,13 @@ def create_app(conf=None):
     app.json_encoder = CustomJSONEncoder
     app.url_map.strict_slashes = False
 
-    config_session(app)
+    # config_session(app)
     config_app(app, conf)
     config_logger()
     config_database(app)
     config_extension(app)
     config_blueprints(app)
-    config_celery(app)
+    #config_celery(app)
 
     return app
 
@@ -63,6 +63,9 @@ def config_app(app, config):
 
 def config_blueprints(application):
 
+    from app.user.urls import user_blue
+    application.register_blueprint(user_blue)
+    '''
     from app.loan import loan
     application.register_blueprint(loan)
     from app.review import review
@@ -77,12 +80,11 @@ def config_blueprints(application):
     application.register_blueprint(apply_blue)
     from app.statistics import statistics
     application.register_blueprint(statistics)
-    from app.user.urls import user_blue
-    application.register_blueprint(user_blue)
     from app.monitor import monitor
     application.register_blueprint(monitor)
     from app.third_api.urls import third_blue
     application.register_blueprint(third_blue)
+    '''
 
 
 class CusAnonymousUserMixin(AnonymousUserMixin):
@@ -92,6 +94,7 @@ class CusAnonymousUserMixin(AnonymousUserMixin):
 def config_extension(app):
 
     login_manager.init_app(app)
+
 
     if Config.ENABLE_SENTRY:
         sentry.init_app(app, dsn=Config.SENTRY_DSN)
@@ -123,13 +126,13 @@ def config_database(app):
     )
     # engine.pool._use_threadlocal = True
     Session.configure(bind=engine)
-
     connect(
-        db=app.config['MONGODB_DB'],
-        host=app.config['MONGODB_HOST'],
-        port=app.config['MONGODB_PORT'],
-        username=app.config['MONGODB_USERNAME'],
-        password=app.config['MONGODB_PASSWORD'],
+        host=app.config['MONGODB_URI'],
+        #db=app.config['MONGODB_DB'],
+        #host=app.config['MONGODB_HOST'],
+        #port=app.config['MONGODB_PORT'],
+        #username=app.config['MONGODB_USERNAME'],
+        #password=app.config['MONGODB_PASSWORD'],
         connect=False,
     )
 
@@ -139,7 +142,7 @@ def config_logger():
         'version': 1,
         'formatters': {
             'standard': {
-                'format': '%(asctime)s [%(levelname)s] %(name)s: %(message)s'
+                'format': '%(asctime)s %(process)d,%(threadName)s,%(thread)d,%(filename)s:%(lineno)d [%(levelname)s] %(message)s',
             },
         },
         'handlers': {

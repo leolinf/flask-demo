@@ -1,10 +1,11 @@
 # -*- coding: utf-8 -*-
-
+import logging
 import json
 
-from flask import g
+from flask import g, session
 from flask_restful import Resource, marshal
 from sqlalchemy.orm import scoped_session
+from flask_login import login_user, logout_user
 
 from .parsers import user_login_parse, module_parser, pwd_parser
 from app.core.data_base_controller import UserController
@@ -19,15 +20,36 @@ from ..constants import CreditAuth
 from ..databases import session_scope, Session
 from .function import ImgController, login_required, current_user
 from flask import current_app
-from .function import current_user, login_required
+
+
+class UserLoginView(Resource):
+
+    def get(self, *args, **kwargs):
+        req = user_login_parse.parse_args(strict=True)
+        with session_scope() as session:
+            user_obj = session.query(User).filter(User.username == req['userName'], User.password==req['pwd']).first()
+            if user_obj:
+                login_user(user_obj)
+            else:
+                raise
+        return make_response()
+
+
+class LoginOutView(Resource):
+
+    @login_required
+    def get(self, *args, **kwargs):
+        logout_user()
+        return make_response(data={})
 
 
 class CompanyInfoView(Resource):
+
     @login_required
     def get(self):
         company_obj = current_user.company
         result = marshal(company_obj, company_info)
-        return make_response(data=result)
+        return make_response(data={})
 
 
 class CompanyModuleList(BaseResource):

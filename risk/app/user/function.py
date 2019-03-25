@@ -30,7 +30,9 @@ from app.models import User
 
 def get_current_user():
 
+    print(request.args)
     user_id = request.args.get('userId')
+    print(user_id)
 
     try:
         session = scoped_session(Session)
@@ -239,7 +241,7 @@ def custom_login_required(func):
         elif current_app.login_manager._login_disabled:
             return func(*args, **kwargs)
         elif not current_user.is_authenticated:
-            if request.method == 'GET' or request.method== 'get': 
+            if request.method == 'GET' or request.method== 'get':
                 token = request.args.get("token")
             else:
                 token = request.json.get("token")
