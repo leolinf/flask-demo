@@ -36,5 +36,5 @@ umsgpack==0.1.0
 urllib3==1.22
 uWSGI==2.0.15
 vine==1.1.4
-Werkzeug==0.12.2
+Werkzeug==0.15.3
 wrapt==1.10.11
