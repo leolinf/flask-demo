@@ -22,7 +22,7 @@ MarkupSafe==1.0
 mongoengine==0.13.0
 mysql-connector-python-rf==2.2.2
 olefile==0.44
-Pillow==4.2.1
+Pillow==8.3.2
 pycrypto==2.6.1
 pymongo==3.4.0
 python-dateutil==2.6.1
