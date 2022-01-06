@@ -15,6 +15,6 @@ WTForms==2.1
 WTForms-JSON==0.3.0
 redis==2.10.5
 psutil==4.3.1
-celery==3.1.23
+celery==5.2.2
 gevent==1.1.2
 requests==2.18.1
