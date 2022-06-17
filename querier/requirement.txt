@@ -6,4 +6,4 @@ happybase==1.0.0
 wtforms==2.1
 python-dateutil==2.6.0
 jieba==0.38
-numpy==1.11.2
+numpy==1.21.0
